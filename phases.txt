@@ -1,0 +1,90 @@
+UNIVERSAL AI BUSINESS BOT (DeepSeek-Only Architecture)
+======================================================
+
+PHASE 1 — DeepSeek AI Core Engine
+---------------------------------
+- DeepSeek API integration
+- Language detection (Arabic, English, Roman Urdu, Hindi)
+- Same-language reply system
+- AI personality rules
+- Error-proof response handling
+- Rate-limit safe design
+
+PHASE 2 — Universal Inventory System (All Industries)
+-----------------------------------------------------
+- Universal JSON format for all industries
+- Auto parts, baqala, halaq, restaurant, mobile shop, etc.
+- Price, stock, service support
+- Category-based logic
+- Inventory loader function
+- Multi-industry templates
+
+PHASE 3 — Multi-Shop Architecture (SaaS Model)
+----------------------------------------------
+- /shops/shop_001/
+- /shops/shop_002/
+- Per-shop inventory
+- Per-shop settings
+- Per-shop AI personality
+- Per-shop WhatsApp number mapping
+- Shop-level isolation
+
+PHASE 4 — Industry-Aware AI Salesman Logic
+------------------------------------------
+- Auto parts: ask for car model, year, engine
+- Baqala: product availability + price
+- Halaq: services + waiting time
+- Restaurant: menu + delivery time
+- Mobile shop: accessories + models
+- Dynamic AI behavior per industry
+
+PHASE 5 — Admin Dashboard (Web Panel)
+-------------------------------------
+- Login system
+- Inventory editor
+- Add/remove/update items
+- Price update
+- Upload CSV
+- Multi-language UI
+- Real-time sync with bot
+
+PHASE 6 — Lead Capture + CRM
+----------------------------
+- Capture customer name
+- Capture phone number
+- Capture product/service request
+- Budget tracking
+- Follow-up reminders
+- Daily lead report
+
+PHASE 7 — Analytics + Insights
+------------------------------
+- Daily chat count
+- Top requested items
+- Out-of-stock alerts
+- Conversion rate
+- AI performance metrics
+
+PHASE 8 — Billing + Subscription System
+---------------------------------------
+- Monthly subscription per shop
+- Payment reminders
+- Auto-disable on expiry
+- Usage-based billing (optional)
+
+PHASE 9 — Deployment + Scaling
+------------------------------
+- Render / Railway deployment
+- Load balancing
+- API rate-limit handling
+- Auto-restart
+- Logging + monitoring
+- Multi-shop scaling
+
+PHASE 10 — Saudi Market Sales Strategy
+--------------------------------------
+- Arabic sales pitch
+- Demo WhatsApp number
+- Industry-specific demos
+- Pricing model
+- Onboarding script
