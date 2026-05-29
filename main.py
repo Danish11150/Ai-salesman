@@ -2,6 +2,7 @@ import os
 import json
 import requests
 from flask import Flask, request, jsonify
+from website import website
 
 from lan.language import LANGUAGE_SYSTEM_PROMPT
 from assets.personality import AI_PERSONALITY_PROMPT
@@ -9,6 +10,7 @@ from utils.error_handle import safe_extract_reply, safe_http_error, safe_excepti
 from utils.rate_limit import respect_rate_limit
 
 app = Flask(__name__)
+app.register_blueprint(website, url_prefix="/website")
 
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
