@@ -2,6 +2,11 @@ import os
 import json
 import requests
 from flask import Flask, request, jsonify
+
+import sys
+
+# 🔹 Add current directory to Python path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from website import website
 
 from lan.language import LANGUAGE_SYSTEM_PROMPT
