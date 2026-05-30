@@ -11,7 +11,7 @@ from utils.error_handle import safe_extract_reply, safe_http_error, safe_excepti
 from utils.rate_limit import respect_rate_limit
 
 app = Flask(__name__)
-app.register_blueprint(website, url_prefix="/website")
+app.register_blueprint(website, url_prefix="/")
 
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
@@ -56,11 +56,6 @@ def ai_agent_reply(user_message: str) -> str:
     except Exception:
         return safe_exception()
 
-
-# 🔥 FLASK ROUTE (Render needs this)
-@app.route("/", methods=["GET"])
-def home():
-    return "AI Bot is Running Successfully!"
 
 
 @app.route("/chat", methods=["POST"])
