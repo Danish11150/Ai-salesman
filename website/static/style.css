@@ -66,3 +66,33 @@ body {
     margin: 50px auto;
   }
 }
+
+/*======= Dashboard ======= */
+.dashboard-container {
+  width: 90%;
+  max-width: 500px;
+  margin: 50px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card {
+  background: #f8f8f8;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.logout-btn {
+  display: block;
+  margin-top: 20px;
+  padding: 12px;
+  background: #ff4d4d;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
