@@ -10,3 +10,7 @@ website = Blueprint(
 @website.route("/")
 def home():
     return render_template("index.html")
+
+@website.route("/login", methods=["GET"])
+def login_page():
+    return render_template("login.html")
