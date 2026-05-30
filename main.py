@@ -10,7 +10,7 @@ from assets.personality import AI_PERSONALITY_PROMPT
 from utils.error_handle import safe_extract_reply, safe_http_error, safe_exception
 from utils.rate_limit import respect_rate_limit
 
-app = Flask(__name__
+app = Flask(__name__,
            static_url_path="/static",
     static_folder="website/static"
            )
