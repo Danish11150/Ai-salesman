@@ -18,7 +18,6 @@ def login_page():
     @website.route("/dashboard")
 def dashboard_page():
     return render_template("dashboard.html")
-
-@website.route("/register", methods=["GET", "POST"])
-def register_page():
-    return render_template("register.html")
+    @website.route("/dashboard")
+def dashboard_page():
+      return render_template("dashboard.html")
