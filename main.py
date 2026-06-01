@@ -16,13 +16,7 @@ app = Flask(__name__,
     static_folder="website/static"
            )
 app.register_blueprint(website, url_prefix="/")
-app.secret_key = "supersecretkey123" #database
-
-# ⭐ Supabase Config (yahan add karna hai)
-SUPABASE_URL = "https://ryvmqbcstrlggeziksou.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ5dm1xYmNzdHJsZ2dlemlrc291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMDUyMjYsImV4cCI6MjA5NTg4MTIyNn0.1bMF5uQaIpo4dBZmz2pz4jaVL02pkwULlTplrI79vsU"
-
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+app.secret_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ5dm1xYmNzdHJsZ2dlemlrc291Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MDMwNTIyNiwiZXhwIjoyMDk1ODgxMjI2fQ.iJwrdLmZ38mK1c1QFTXLvKiAsj4dCzpfEGrkfXH9lqo"
 
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
