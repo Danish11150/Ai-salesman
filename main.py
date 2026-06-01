@@ -19,8 +19,8 @@ app.register_blueprint(website, url_prefix="/")
 app.secret_key = "supersecretkey123" #database
 
 # ⭐ Supabase Config (yahan add karna hai)
-SUPABASE_URL = "https://xxxxx.supabase.co"
-SUPABASE_KEY = "your_anon_key"
+SUPABASE_URL = "https://ryvmqbcstrlggeziksou.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ5dm1xYmNzdHJsZ2dlemlrc291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMDUyMjYsImV4cCI6MjA5NTg4MTIyNn0.1bMF5uQaIpo4dBZmz2pz4jaVL02pkwULlTplrI79vsU"
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
