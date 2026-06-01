@@ -24,7 +24,7 @@ def register_page():
 
         hashed = generate_password_hash(password)
 
-        supabase.table("users").insert({
+        supabase.table("user").insert({
             "name": name,
             "email": email,
             "password": hashed
