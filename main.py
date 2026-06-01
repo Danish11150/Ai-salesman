@@ -3,6 +3,7 @@ import json
 import requests
 from flask import Flask, request, jsonify
 from website import website
+from supabase import create_client
 
 
 from lan.language import LANGUAGE_SYSTEM_PROMPT
@@ -15,6 +16,13 @@ app = Flask(__name__,
     static_folder="website/static"
            )
 app.register_blueprint(website, url_prefix="/")
+app.secret_key = "supersecretkey123" #database
+
+# ⭐ Supabase Config (yahan add karna hai)
+SUPABASE_URL = "https://xxxxx.supabase.co"
+SUPABASE_KEY = "your_anon_key"
+
+supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
