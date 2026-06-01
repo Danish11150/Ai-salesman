@@ -42,7 +42,7 @@ def login_page():
         email = request.form["email"]
         password = request.form["password"]
 
-        result = supabase.table("users").select("*").eq("email", email).execute()
+        result = supabase.table("user").select("*").eq("email", email).execute()
 
         if result.data:
             user = result.data[0]
