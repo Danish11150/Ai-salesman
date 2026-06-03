@@ -28,21 +28,24 @@
             <a href="#">Configure Bot</a>
         </div>
 
-        <a class="logout-btn" href="/login">Logout</a>
+        <a class="logout-btn" href="/logout">Logout</a>
     </div>
 
     <div class="menu-icon" onclick="toggleMenu()">
-    &#9776;  <!-- hamburger icon -->
+        &#9776;
     </div>
 
     <div id="sideMenu" class="side-menu">
-    <a href="/dashboard">Dashboard</a>
-    <a href="/inventory">Inventory</a>
-    <a href="/customers">Customers</a>
-    <a href="/automation">Automation</a>
-    <a href="/billing">Billing</a>
-    <a href="/logout">Logout</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/inventory">Inventory</a>
+        <a href="/customers">Customers</a>
+        <a href="/automation">Automation</a>
+        <a href="/billing">Billing</a>
+        <a href="/logout">Logout</a>
     </div>
-    
+
+    <!-- FIXED JS PATH -->
+    <script src="{{ url_for('website.static', filename='script.js') }}"></script>
+
 </body>
 </html>
