@@ -128,3 +128,8 @@ body {
 .side-menu a:hover {
     background-color: #575757;
 }
+
+.side-menu {
+    box-shadow: -4px 0 10px rgba(0,0,0,0.4);
+    backdrop-filter: blur(6px);
+}
