@@ -20,3 +20,12 @@ function toggleMenu() {
         menu.style.width = "250px";
     }
 }
+
+document.addEventListener("click", function(event) {
+    const menu = document.getElementById("sideMenu");
+    const icon = document.querySelector(".menu-icon");
+
+    if (!menu.contains(event.target) && !icon.contains(event.target)) {
+        menu.style.width = "0";
+    }
+});
