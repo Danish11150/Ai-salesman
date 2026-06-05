@@ -86,3 +86,9 @@ def upload_inventory():
         return "Inventory Uploaded Successfully!"
 
     return render_template("upload_inventory.html")
+
+@website.route("/inventory")
+def inventory_page():
+    if "user_id" not in session:
+        return redirect("/login")
+    return render_template("inventory.html")
