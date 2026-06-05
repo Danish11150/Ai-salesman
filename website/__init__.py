@@ -91,4 +91,12 @@ def upload_inventory():
 def inventory_page():
     if "user_id" not in session:
         return redirect("/login")
-    return render_template("inventory.html")
+
+    # Import inside function (best practice)
+    from website.inventory import get_inventory
+
+    # Fetch all items from database
+    items = get_inventory()
+
+    # Send items to HTML page
+    return render_template("inventory.html", items=items)
