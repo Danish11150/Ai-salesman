@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from supabase_client import supabase   # ⭐ Supabase import from main.py
+from website.inventory import load_inventory
+
 
 website = Blueprint(
     "website",
