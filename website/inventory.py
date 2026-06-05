@@ -1,8 +1,5 @@
 import json
-from supabase import create_client
-
-# Supabase client
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+from supabase_client import supabase   # <-- Correct import
 
 def load_inventory(json_data):
     industry = json_data["industry"]
