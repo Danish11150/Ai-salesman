@@ -25,3 +25,7 @@ def save_item(industry, category, item):
         "tags": item.get("tags", []),
         "meta": item.get("meta", {})
     }).execute()
+
+def get_inventory():
+    result = supabase.table("inventory").select("*").execute()
+    return result.data
