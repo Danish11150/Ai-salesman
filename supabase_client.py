@@ -1,6 +1,16 @@
 from supabase import create_client
+import os
 
-SUPABASE_URL = "https://ryvmqbcstrlggeziksou.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ5dm1xYmNzdHJsZ2dlemlrc291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMDUyMjYsImV4cCI6MjA5NTg4MTIyNn0.1bMF5uQaIpo4dBZmz2pz4jaVL02pkwULlTplrI79vsU"
+# Render environment variables
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
+# Fallback (local development)
+if not SUPABASE_URL:
+    SUPABASE_URL = "https://ryvmqbcstrlggeziksou.supabase.co"
+
+if not SUPABASE_KEY:
+    SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+
+# Create client
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
