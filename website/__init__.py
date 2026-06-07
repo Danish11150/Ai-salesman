@@ -70,22 +70,26 @@ def dashboard_page():
 
 @website.route("/upload_inventory", methods=["GET", "POST"])
 def upload_inventory():
-    # User must be logged in
     if "user_id" not in session:
         return redirect("/login")
 
     if request.method == "POST":
         file = request.files["file"]
 
-        # Load JSON file
-        data = json.load(file)
+        # Detect file type
+        if file.filename.endswith(".txt"):
+            from website.inventory import txt_to_json
+            data = txt_to_json(file)
+        else:
+            data = json.load(file)
 
         # Send to inventory engine
         load_inventory(data)
 
-        return "Inventory Uploaded Successfully!"
+        return redirect("/inventory")
 
     return render_template("upload_inventory.html")
+
 
 @website.route("/inventory")
 def inventory_page():
