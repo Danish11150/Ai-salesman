@@ -47,14 +47,17 @@ def txt_to_json(file):
 
         elif line.lower().startswith("item:"):
             item_name = line.split(":")[1].strip()
-            item = {"id": item_name.lower().replace(" ", "_"), "name": item_name}
+            item = {
+                "id": item_name.lower().replace(" ", "_"),
+                "name": item_name
+            }
             current_category["items"].append(item)
 
         elif line.lower().startswith("price:"):
             price_text = line.split(":")[1].strip().lower()
-price_value = ''.join(ch for ch in price_text if ch.isdigit() or ch == '.')
-current_category["items"][-1]["price"] = float(price_value) if price_value else 0
-current_category["items"][-1]["currency"] = "SAR" if "sar" in price_text else "USD"
+            price_value = ''.join(ch for ch in price_text if ch.isdigit() or ch == '.')
+            current_category["items"][-1]["price"] = float(price_value) if price_value else 0
+            current_category["items"][-1]["currency"] = "SAR" if "sar" in price_text else "USD"
 
         elif line.lower().startswith("stock:"):
             qty = int(line.split(":")[1].strip())
