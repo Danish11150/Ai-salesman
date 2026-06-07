@@ -1,8 +1,35 @@
-<h2>Upload Inventory</h2>
-
-<form method="POST" enctype="multipart/form-data">
-    <label>Select JSON File:</label>
-    <input type="file" name="file" required>
-
-    <button type="submit">Upload</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Inventory</title>
+  <style>
+    body { font-family: Arial; background: #f4f6f9; padding: 20px; }
+    .container { max-width: 600px; margin: auto; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+    h2 { color: #333; }
+    .btn { background: #4CAF50; color: white; padding: 10px 18px; border: none; border-radius: 6px; cursor: pointer; }
+    .btn:hover { background: #45a049; }
+    input[type=file] { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Upload or Create Inventory</h2>
+    <form action="/upload_inventory" method="POST" enctype="multipart/form-data">
+      <label>Choose TXT or Excel file:</label><br>
+      <input type="file" name="file" accept=".txt,.csv,.xlsx"><br><br>
+      <button class="btn" type="submit">Upload Inventory</button>
+    </form>
+    <hr>
+    <h3>Or Create Manually</h3>
+    <form action="/create_inventory" method="POST">
+      <input type="text" name="category" placeholder="Category"><br><br>
+      <input type="text" name="name" placeholder="Item Name"><br><br>
+      <input type="number" name="price" placeholder="Price"><br><br>
+      <input type="number" name="stock_qty" placeholder="Stock Quantity"><br><br>
+      <button class="btn" type="submit">Add Item</button>
+    </form>
+  </div>
+</body>
+</html>
