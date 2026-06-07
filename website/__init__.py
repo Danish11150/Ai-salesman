@@ -104,3 +104,26 @@ def inventory_page():
 
     # Send items to HTML page
     return render_template("inventory.html", items=items)
+
+@website.route("/create_inventory", methods=["POST"])
+def create_inventory():
+    if "user_id" not in session:
+        return redirect("/login")
+
+    category = request.form["category"]
+    name = request.form["name"]
+    price = float(request.form["price"])
+    stock_qty = int(request.form["stock_qty"])
+
+    item = {
+        "id": name.lower().replace(" ", "_"),
+        "name": name,
+        "price": price,
+        "stock_qty": stock_qty,
+        "in_stock": stock_qty > 0
+    }
+
+    from website.inventory import save_item
+    save_item("manual", category, item)
+
+    return redirect("/inventory")
