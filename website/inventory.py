@@ -35,7 +35,7 @@ def txt_to_json(file):
     lines = file.read().decode("utf-8").splitlines()
     data = {"industry": "manual", "categories": []}
 
-    # Auto category (because user never writes category)
+    # Auto category because your file has no category
     current_category = {"name": "General", "items": []}
     data["categories"].append(current_category)
 
@@ -46,17 +46,14 @@ def txt_to_json(file):
         if not line:
             continue
 
-        # Detect ITEM (supports: "1. Item: Laptop", "Item: Laptop", "Laptop")
+        # Detect ITEM (supports: "1. Item: Laptop", "Item: Laptop")
         if "item:" in line.lower():
-            item_name = line.split("item:", 1)[1].strip()
-        elif line[0].isdigit() and "item" in line.lower():
-            item_name = line.split("item", 1)[1].replace(":", "").strip()
-        elif line.lower().startswith("item"):
-            item_name = line.split(":", 1)[1].strip()
-        else:
-            item_name = None
+            parts = line.lower().split("item:", 1)
+            if len(parts) > 1:
+                item_name = parts[1].strip().title()
+            else:
+                continue
 
-        if item_name:
             last_item = {
                 "id": item_name.lower().replace(" ", "_"),
                 "name": item_name,
@@ -68,16 +65,17 @@ def txt_to_json(file):
             current_category["items"].append(last_item)
             continue
 
-        # Detect QUANTITY (supports: "Quantity: 5", "Qty: 5", "QTY 5")
-        if "quantity" in line.lower() or "qty" in line.lower():
+        # Detect QUANTITY (supports: "Quantity: 5")
+        if "quantity:" in line.lower():
             if last_item:
-                qty = ''.join(ch for ch in line if ch.isdigit())
+                qty_text = line.split(":", 1)[1].strip()
+                qty = ''.join(ch for ch in qty_text if ch.isdigit())
                 last_item["stock_qty"] = int(qty) if qty else 0
                 last_item["in_stock"] = last_item["stock_qty"] > 0
             continue
 
-        # Detect PRICE (supports: "Price: 1200 sar", "1200", "1200 SAR")
-        if "price" in line.lower():
+        # Detect PRICE (supports: "Price: 1200 sar")
+        if "price:" in line.lower():
             if last_item:
                 price_text = line.split(":", 1)[1].strip().lower()
                 price_value = ''.join(ch for ch in price_text if ch.isdigit() or ch == '.')
