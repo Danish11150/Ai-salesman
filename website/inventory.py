@@ -51,7 +51,10 @@ def txt_to_json(file):
             current_category["items"].append(item)
 
         elif line.lower().startswith("price:"):
-            current_category["items"][-1]["price"] = float(line.split(":")[1].strip())
+            price_text = line.split(":")[1].strip().lower()
+price_value = ''.join(ch for ch in price_text if ch.isdigit() or ch == '.')
+current_category["items"][-1]["price"] = float(price_value) if price_value else 0
+current_category["items"][-1]["currency"] = "SAR" if "sar" in price_text else "USD"
 
         elif line.lower().startswith("stock:"):
             qty = int(line.split(":")[1].strip())
