@@ -29,3 +29,33 @@ def save_item(industry, category, item):
 def get_inventory():
     result = supabase.table("inventory").select("*").execute()
     return result.data
+
+
+def txt_to_json(file):
+    lines = file.read().decode("utf-8").splitlines()
+    data = {"industry": "manual", "categories": []}
+    current_category = None
+
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+
+        if line.lower().startswith("category:"):
+            current_category = {"name": line.split(":")[1].strip(), "items": []}
+            data["categories"].append(current_category)
+
+        elif line.lower().startswith("item:"):
+            item_name = line.split(":")[1].strip()
+            item = {"id": item_name.lower().replace(" ", "_"), "name": item_name}
+            current_category["items"].append(item)
+
+        elif line.lower().startswith("price:"):
+            current_category["items"][-1]["price"] = float(line.split(":")[1].strip())
+
+        elif line.lower().startswith("stock:"):
+            qty = int(line.split(":")[1].strip())
+            current_category["items"][-1]["stock_qty"] = qty
+            current_category["items"][-1]["in_stock"] = qty > 0
+
+    return data
