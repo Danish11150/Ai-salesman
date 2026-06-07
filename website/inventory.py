@@ -34,34 +34,55 @@ def get_inventory():
 def txt_to_json(file):
     lines = file.read().decode("utf-8").splitlines()
     data = {"industry": "manual", "categories": []}
-    current_category = None
+
+    # Auto category (because user never writes category)
+    current_category = {"name": "General", "items": []}
+    data["categories"].append(current_category)
+
+    last_item = None
 
     for line in lines:
         line = line.strip()
         if not line:
             continue
 
-        if line.lower().startswith("category:"):
-            current_category = {"name": line.split(":")[1].strip(), "items": []}
-            data["categories"].append(current_category)
+        # Detect ITEM (supports: "1. Item: Laptop", "Item: Laptop", "Laptop")
+        if "item:" in line.lower():
+            item_name = line.split("item:", 1)[1].strip()
+        elif line[0].isdigit() and "item" in line.lower():
+            item_name = line.split("item", 1)[1].replace(":", "").strip()
+        elif line.lower().startswith("item"):
+            item_name = line.split(":", 1)[1].strip()
+        else:
+            item_name = None
 
-        elif line.lower().startswith("item:"):
-            item_name = line.split(":")[1].strip()
-            item = {
+        if item_name:
+            last_item = {
                 "id": item_name.lower().replace(" ", "_"),
-                "name": item_name
+                "name": item_name,
+                "price": 0,
+                "stock_qty": 0,
+                "in_stock": True,
+                "currency": "SAR"
             }
-            current_category["items"].append(item)
+            current_category["items"].append(last_item)
+            continue
 
-        elif line.lower().startswith("price:"):
-            price_text = line.split(":")[1].strip().lower()
-            price_value = ''.join(ch for ch in price_text if ch.isdigit() or ch == '.')
-            current_category["items"][-1]["price"] = float(price_value) if price_value else 0
-            current_category["items"][-1]["currency"] = "SAR" if "sar" in price_text else "USD"
+        # Detect QUANTITY (supports: "Quantity: 5", "Qty: 5", "QTY 5")
+        if "quantity" in line.lower() or "qty" in line.lower():
+            if last_item:
+                qty = ''.join(ch for ch in line if ch.isdigit())
+                last_item["stock_qty"] = int(qty) if qty else 0
+                last_item["in_stock"] = last_item["stock_qty"] > 0
+            continue
 
-        elif line.lower().startswith("stock:"):
-            qty = int(line.split(":")[1].strip())
-            current_category["items"][-1]["stock_qty"] = qty
-            current_category["items"][-1]["in_stock"] = qty > 0
+        # Detect PRICE (supports: "Price: 1200 sar", "1200", "1200 SAR")
+        if "price" in line.lower():
+            if last_item:
+                price_text = line.split(":", 1)[1].strip().lower()
+                price_value = ''.join(ch for ch in price_text if ch.isdigit() or ch == '.')
+                last_item["price"] = float(price_value) if price_value else 0
+                last_item["currency"] = "SAR" if "sar" in price_text else "USD"
+            continue
 
     return data
