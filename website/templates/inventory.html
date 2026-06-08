@@ -106,6 +106,7 @@
                     <th>Category</th>
                     <th>Price</th>
                     <th>Stock</th>
+                    <th>Actions</th>
                 </tr>
 
                 {% for item in items %}
@@ -114,6 +115,11 @@
                     <td>{{ item.category }}</td>
                     <td>{{ item.price }} {{ item.currency }}</td>
                     <td>{{ item.stock_qty }}</td>
+
+                    <td>
+                        <a href="/edit_item/{{ item.id }}" style="color: blue; margin-right: 10px;">Edit</a>
+                        <a href="/delete_item/{{ item.id }}" style="color: red;">Delete</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </table>
