@@ -127,3 +127,34 @@ def create_inventory():
     save_item("manual", category, item)
 
     return redirect("/inventory")
+
+
+
+
+@website.route("/delete_item/<item_id>")
+def delete_item(item_id):
+    supabase.table("inventory").delete().eq("id", item_id).execute()
+    return redirect("/inventory")
+
+@website.route("/edit_item/<item_id>")
+def edit_item(item_id):
+    item = supabase.table("inventory").select("*").eq("id", item_id).execute().data
+    if not item:
+        return "Item not found"
+    return render_template("edit_item.html", item=item[0])
+
+
+@website.route("/update_item/<item_id>", methods=["POST"])
+def update_item(item_id):
+    name = request.form["name"]
+    price = float(request.form["price"])
+    stock_qty = int(request.form["stock_qty"])
+
+    supabase.table("inventory").update({
+        "name": name,
+        "price": price,
+        "stock_qty": stock_qty,
+        "in_stock": stock_qty > 0
+    }).eq("id", item_id).execute()
+
+    return redirect("/inventory")
