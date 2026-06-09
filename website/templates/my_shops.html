@@ -1,0 +1,23 @@
+<h2>Your Shops</h2>
+
+<a href="/create_shop">+ Create New Shop</a>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Industry</th>
+        <th>Plan</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for shop in shops %}
+    <tr>
+        <td>{{ shop.name }}</td>
+        <td>{{ shop.industry }}</td>
+        <td>{{ shop.plan }}</td>
+        <td>
+            <a href="/inventory?shop_id={{ shop.id }}">Open</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
