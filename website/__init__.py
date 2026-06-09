@@ -178,3 +178,11 @@ def create_shop():
         return redirect("/my_shops")
 
     return render_template("create_shop.html")
+
+@website.route("/my_shops")
+def my_shops():
+    if "user_id" not in session:
+        return redirect("/login")
+
+    shops = supabase.table("shops").select("*").eq("user_id", session["user_id"]).execute().data
+    return render_template("my_shops.html", shops=shops)
