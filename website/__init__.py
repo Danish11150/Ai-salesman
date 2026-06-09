@@ -158,3 +158,23 @@ def update_item(item_id):
     }).eq("id", item_id).execute()
 
     return redirect("/inventory")
+
+@website.route("/create_shop", methods=["GET", "POST"])
+def create_shop():
+    if "user_id" not in session:
+        return redirect("/login")
+
+    if request.method == "POST":
+        name = request.form["name"]
+        industry = request.form["industry"]
+
+        supabase.table("shops").insert({
+            "user_id": session["user_id"],
+            "name": name,
+            "industry": industry,
+            "plan": "basic"
+        }).execute()
+
+        return redirect("/my_shops")
+
+    return render_template("create_shop.html")
