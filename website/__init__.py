@@ -106,7 +106,7 @@ def inventory_page():
     from website.inventory import get_inventory
 
     # Fetch all items from database
-    items = get_inventory()
+    items = supabase.table("inventory").select("*").eq("shop_id", shop_id).execute().data
 
     # Send items to HTML page
     return render_template("inventory.html", items=items)
