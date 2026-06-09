@@ -1,27 +1,100 @@
-<h2>Create Your Shop</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Shop</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
 
-<form method="POST">
+        .container {
+            max-width: 600px;
+            margin: 60px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
 
-    <label>Shop Name:</label>
-    <input type="text" name="name" required>
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
 
-    <label>Industry (optional):</label>
-    <input type="text" name="industry" placeholder="Grocery, Auto Parts, Barber, etc.">
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
 
-    <label>Shop Type:</label>
-    <select name="shop_type">
-        <option value="product">Product Based</option>
-        <option value="service">Service Based</option>
-        <option value="both">Both</option>
-    </select>
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
 
-    <label>Default Currency:</label>
-    <select name="currency">
-        <option value="SAR">SAR (Saudi Riyal)</option>
-        <option value="USD">USD</option>
-        <option value="PKR">PKR</option>
-        <option value="INR">INR</option>
-    </select>
+        button {
+            width: 100%;
+            background: #0078D7;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-    <button type="submit">Create Shop</button>
-</form>
+        button:hover {
+            background: #005fa3;
+        }
+
+        .note {
+            text-align: center;
+            font-size: 13px;
+            color: #777;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Create Your Shop</h2>
+        <form method="POST">
+            <label>Shop Name:</label>
+            <input type="text" name="name" placeholder="Enter your shop name" required>
+
+            <label>Industry (optional):</label>
+            <input type="text" name="industry" placeholder="Grocery, Auto Parts, Barber, etc.">
+
+            <label>Shop Type:</label>
+            <select name="shop_type">
+                <option value="product">Product Based</option>
+                <option value="service">Service Based</option>
+                <option value="both">Both</option>
+            </select>
+
+            <label>Default Currency:</label>
+            <select name="currency">
+                <option value="SAR">SAR (Saudi Riyal)</option>
+                <option value="USD">USD</option>
+                <option value="PKR">PKR</option>
+                <option value="INR">INR</option>
+            </select>
+
+            <button type="submit">Create Shop</button>
+        </form>
+        <p class="note">Your shop will be linked to your account automatically.</p>
+    </div>
+</body>
+</html>
