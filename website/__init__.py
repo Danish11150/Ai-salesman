@@ -173,18 +173,21 @@ def create_shop():
     if request.method == "POST":
         name = request.form["name"]
         industry = request.form["industry"]
+        shop_type = request.form["shop_type"]
+        currency = request.form["currency"]
 
         supabase.table("shops").insert({
             "user_id": session["user_id"],
             "name": name,
             "industry": industry,
+            "shop_type": shop_type,
+            "currency": currency,
             "plan": "basic"
         }).execute()
 
         return redirect("/my_shops")
 
     return render_template("create_shop.html")
-
 @website.route("/my_shops")
 def my_shops():
     if "user_id" not in session:
