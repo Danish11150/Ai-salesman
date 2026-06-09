@@ -96,6 +96,12 @@ def inventory_page():
     if "user_id" not in session:
         return redirect("/login")
 
+    # Get shop_id from URL
+    shop_id = request.args.get("shop_id")
+
+    if not shop_id:
+        return "Error: shop_id is missing"
+        
     # Import inside function (best practice)
     from website.inventory import get_inventory
 
