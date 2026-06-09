@@ -1,11 +1,27 @@
 <h2>Create Your Shop</h2>
 
 <form method="POST">
+
     <label>Shop Name:</label>
     <input type="text" name="name" required>
 
     <label>Industry (optional):</label>
-    <input type="text" name="industry">
+    <input type="text" name="industry" placeholder="Grocery, Auto Parts, Barber, etc.">
+
+    <label>Shop Type:</label>
+    <select name="shop_type">
+        <option value="product">Product Based</option>
+        <option value="service">Service Based</option>
+        <option value="both">Both</option>
+    </select>
+
+    <label>Default Currency:</label>
+    <select name="currency">
+        <option value="SAR">SAR (Saudi Riyal)</option>
+        <option value="USD">USD</option>
+        <option value="PKR">PKR</option>
+        <option value="INR">INR</option>
+    </select>
 
     <button type="submit">Create Shop</button>
 </form>
