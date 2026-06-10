@@ -44,26 +44,17 @@
     </div>
 
     <div id="sideMenu" class="side-menu">
-        <a href="/dashboard">Dashboard</a>
-        <a href="/inventory">Inventory</a>
-        <a href="/customers">Customers</a>
-        <a href="/automation">Automation</a>
-        <a href="/billing">Billing</a>
-        <a href="/logout">Logout</a>
+       <a href="/dashboard">Dashboard</a>
+       <a href="/my_shops">My Shops</a>   <!-- Added -->
+       <a href="/customers">Customers</a>
+       <a href="/automation">Automation</a>
+       <a href="/billing">Billing</a>
+       <a href="/logout">Logout</a>
     </div>
 
     <!-- FIXED JS PATH -->
     <script src="{{ url_for('website.static', filename='script.js') }}"></script>
 
-    <div style="text-align:center; margin-top:30px;">
-    <a href="/create_shop" 
-       style="background:#0078D7; color:white; padding:12px 20px; 
-              border-radius:6px; text-decoration:none; font-weight:600;">
-       + Create Shop
-    </a>
-    
-    </div>
-    
 </body>
     
 </html>
