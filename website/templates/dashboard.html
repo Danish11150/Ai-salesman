@@ -47,7 +47,19 @@
     <!-- FIXED JS PATH -->
     <script src="{{ url_for('website.static', filename='script.js') }}"></script>
 
-    <a href="/create_shop" class="btn">+ Create Shop</a>
-    <a href="/upload_inventory" class="btn">Upload Inventory</a>
+    <div style="text-align:center; margin-top:30px;">
+    <a href="/create_shop" 
+       style="background:#0078D7; color:white; padding:12px 20px; 
+              border-radius:6px; text-decoration:none; font-weight:600;">
+       + Create Shop
+    </a>
+    <a href="/upload_inventory" 
+       style="background:#28a745; color:white; padding:12px 20px; 
+              border-radius:6px; text-decoration:none; font-weight:600; margin-left:10px;">
+       Upload Inventory
+    </a>
+    </div>
+    
+   <!a href="/upload_inventory" class="btn">Upload Inventory<!/a>
 </body>
 </html>
