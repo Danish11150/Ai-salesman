@@ -1,23 +1,113 @@
-<h2>Your Shops</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shops</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
 
-<a href="/create_shop">+ Create New Shop</a>
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Industry</th>
-        <th>Plan</th>
-        <th>Actions</th>
-    </tr>
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
 
-    {% for shop in shops %}
-    <tr>
-        <td>{{ shop.name }}</td>
-        <td>{{ shop.industry }}</td>
-        <td>{{ shop.plan }}</td>
-        <td>
-            <a href="/inventory?shop_id={{ shop.id }}">Open</a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+        .top-actions {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .top-actions a {
+            background: #0078D7;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .shop-card {
+            background: #f9fafc;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+
+        .shop-card:hover {
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .shop-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0078D7;
+        }
+
+        .shop-info {
+            margin-top: 8px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .shop-actions {
+            margin-top: 12px;
+        }
+
+        .shop-actions a {
+            background: #28a745;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .shop-actions a:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Shops</h2>
+
+        <div class="top-actions">
+            <a href="/create_shop">+ Create New Shop</a>
+            <a href="/upload_inventory">Upload Inventory</a>
+        </div>
+
+        {% for shop in shops %}
+        <div class="shop-card">
+            <div class="shop-title">{{ shop.name }}</div>
+            <div class="shop-info">
+                <strong>Industry:</strong> {{ shop.industry }} <br>
+                <strong>Plan:</strong> {{ shop.plan }}
+            </div>
+            <div class="shop-actions">
+                <a href="/inventory?shop_id={{ shop.id }}">Open</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
