@@ -159,6 +159,16 @@ def create_inventory():
 
     return redirect("/inventory")
 
+@website.route("/delete_shop")
+def delete_shop():
+    shop_id = request.args.get("shop_id")
+
+    if not shop_id:
+        return "Error: shop_id missing"
+
+    supabase.table("shops").delete().eq("id", shop_id).execute()
+
+    return redirect("/my_shops")
 
 
 
