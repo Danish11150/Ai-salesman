@@ -164,32 +164,40 @@ def create_inventory():
 
 @website.route("/delete_item/<item_id>")
 def delete_item(item_id):
+    shop_id = request.args.get("shop_id")
     supabase.table("inventory").delete().eq("id", item_id).execute()
-    return redirect("/inventory")
+    return redirect(f"/inventory?shop_id={shop_id}")
 
-@website.route("/edit_item/<item_id>")
-def edit_item(item_id):
-    item = supabase.table("inventory").select("*").eq("id", item_id).execute().data
-    if not item:
-        return "Item not found"
-    return render_template("edit_item.html", item=item[0])
+@website.route("/edit_shop")
+def edit_shop():
+    shop_id = request.args.get("shop_id")
 
+    if not shop_id:
+        return "Error: shop_id missing"
 
-@website.route("/update_item/<item_id>", methods=["POST"])
-def update_item(item_id):
-    name = request.form["name"]
-    price = float(request.form["price"])
-    stock_qty = int(request.form["stock_qty"])
+    shop = supabase.table("shops").select("*").eq("id", shop_id).execute().data
 
-    supabase.table("inventory").update({
+    if not shop:
+        return "Shop not found"
+
+    return render_template("edit_shop.html", shop=shop[0])
+
+@website.route("/update_shop", methods=["POST"])
+def update_shop():
+    shop_id = request.form.get("shop_id")
+    name = request.form.get("name")
+    industry = request.form.get("industry")
+    shop_type = request.form.get("shop_type")
+    currency = request.form.get("currency")
+
+    supabase.table("shops").update({
         "name": name,
-        "price": price,
-        "stock_qty": stock_qty,
-        "in_stock": stock_qty > 0
-    }).eq("id", item_id).execute()
+        "industry": industry,
+        "shop_type": shop_type,
+        "currency": currency
+    }).eq("id", shop_id).execute()
 
-    return redirect("/inventory")
-
+    return redirect("/my_shops")
 @website.route("/create_shop", methods=["GET", "POST"])
 def create_shop():
     if "user_id" not in session:
