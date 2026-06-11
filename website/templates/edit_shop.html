@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Shop</title>
+    <style>
+        body { font-family: Arial; background: #f4f6f9; padding: 40px; }
+        .card {
+            background: white; padding: 25px; border-radius: 10px;
+            max-width: 500px; margin: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        input, select {
+            width: 100%; padding: 10px; margin-top: 10px;
+            border: 1px solid #ccc; border-radius: 6px;
+        }
+        button {
+            margin-top: 20px; padding: 12px; width: 100%;
+            background: #0078D7; color: white; border: none; border-radius: 6px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Edit Shop</h2>
+
+    <form action="/update_shop" method="POST">
+
+        <input type="hidden" name="shop_id" value="{{ shop.id }}">
+
+        <label>Shop Name</label>
+        <input type="text" name="name" value="{{ shop.name }}" required>
+
+        <label>Industry</label>
+        <input type="text" name="industry" value="{{ shop.industry }}">
+
+        <label>Shop Type</label>
+        <select name="shop_type">
+            <option value="product" {% if shop.shop_type == 'product' %}selected{% endif %}>Product Based</option>
+            <option value="service" {% if shop.shop_type == 'service' %}selected{% endif %}>Service Based</option>
+            <option value="both" {% if shop.shop_type == 'both' %}selected{% endif %}>Both</option>
+        </select>
+
+        <label>Currency</label>
+        <select name="currency">
+            <option value="SAR" {% if shop.currency == 'SAR' %}selected{% endif %}>SAR</option>
+            <option value="USD" {% if shop.currency == 'USD' %}selected{% endif %}>USD</option>
+            <option value="PKR" {% if shop.currency == 'PKR' %}selected{% endif %}>PKR</option>
+            <option value="INR" {% if shop.currency == 'INR' %}selected{% endif %}>INR</option>
+        </select>
+
+        <button type="submit">Save Changes</button>
+
+    </form>
+</div>
+
+</body>
+</html>
