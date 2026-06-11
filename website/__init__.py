@@ -4,6 +4,7 @@ from supabase_client import supabase   # ⭐ Supabase import from main.py
 from website.inventory import load_inventory
 import json
 from flask import request, redirect, render_template, session
+from website.inventory import get_inventory
 
 
 website = Blueprint(
@@ -90,6 +91,30 @@ def upload_inventory():
 
     return render_template("upload_inventory.html")
 
+@website.route("/add_inventory", methods=["POST"])
+def add_inventory():
+    if "user_id" not in session:
+        return redirect("/login")
+
+    shop_id = request.form.get("shop_id")
+    name = request.form.get("name")
+    category = request.form.get("category")
+    price = request.form.get("price")
+    stock_qty = request.form.get("stock_qty")
+
+    if not shop_id:
+        return "Error: shop_id is missing"
+
+    supabase.table("inventory").insert({
+        "shop_id": shop_id,
+        "name": name,
+        "category": category,
+        "price": price,
+        "stock_qty": stock_qty
+    }).execute()
+
+    return redirect(f"/inventory?shop_id={shop_id}")
+
 
 @website.route("/inventory")
 def inventory_page():
@@ -109,7 +134,7 @@ def inventory_page():
     items = supabase.table("inventory").select("*").eq("shop_id", shop_id).execute().data
 
     # Send items to HTML page
-    return render_template("inventory.html", items=items)
+    return render_template("inventory.html", items=items, shop_id=shop_id)
 
 @website.route("/create_inventory", methods=["POST"])
 def create_inventory():
