@@ -170,12 +170,47 @@ def delete_shop():
 
     return redirect("/my_shops")
 
+@website.route("/edit_item/<item_id>")
+def edit_item(item_id):
+    if "user_id" not in session:
+        return redirect("/login")
+
+    shop_id = request.args.get("shop_id")
+
+    item = supabase.table("inventory").select("*").eq("id", item_id).execute().data
+
+    if not item:
+        return "Item not found"
+
+    return render_template("edit_inventory.html", item=item[0], shop_id=shop_id)
+
 
 
 @website.route("/delete_item/<item_id>")
 def delete_item(item_id):
     shop_id = request.args.get("shop_id")
     supabase.table("inventory").delete().eq("id", item_id).execute()
+    return redirect(f"/inventory?shop_id={shop_id}")
+
+@website.route("/update_item", methods=["POST"])
+def update_item():
+    if "user_id" not in session:
+        return redirect("/login")
+
+    item_id = request.form.get("item_id")
+    shop_id = request.form.get("shop_id")
+    name = request.form.get("name")
+    category = request.form.get("category")
+    price = request.form.get("price")
+    stock_qty = request.form.get("stock_qty")
+
+    supabase.table("inventory").update({
+        "name": name,
+        "category": category,
+        "price": price,
+        "stock_qty": stock_qty
+    }).eq("id", item_id).execute()
+
     return redirect(f"/inventory?shop_id={shop_id}")
 
 @website.route("/edit_shop")
