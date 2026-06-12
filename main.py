@@ -4,6 +4,8 @@ import requests
 from flask import Flask, request, jsonify
 from website import website
 from supabase import create_client
+from flask import Flask, request, jsonify, render_template, redirect, url_for, session
+import urllib.parse
 
 
 from lan.language import LANGUAGE_SYSTEM_PROMPT
@@ -17,6 +19,11 @@ app = Flask(__name__,
            )
 app.register_blueprint(website, url_prefix="/")
 app.secret_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ5dm1xYmNzdHJsZ2dlemlrc291Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MDMwNTIyNiwiZXhwIjoyMDk1ODgxMjI2fQ.iJwrdLmZ38mK1c1QFTXLvKiAsj4dCzpfEGrkfXH9lqo"
+
+
+META_APP_ID = os.getenv("META_APP_ID")
+META_APP_SECRET = os.getenv("META_APP_SECRET")
+REDIRECT_URI = os.getenv("META_REDIRECT_URI")
 
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
