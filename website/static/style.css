@@ -1,3 +1,20 @@
+:root {
+    --primary: #0078D7;
+    --primary-dark: #005FA3;
+    --background: #F5F7FA;
+    --text: #222;
+    --card-bg: #ffffff;
+    --border: #e5e5e5;
+}
+
+[data-theme="dark"] {
+    --background: #0D1117;
+    --text: #E6E6E6;
+    --card-bg: #11161c;
+    --border: #1f2933;
+}
+
+
 /* ====== BASIC RESET ====== */
 body {
   margin: 0;
@@ -138,18 +155,33 @@ body {
     transition: width 0.4s ease, background-color 0.3s ease;
 }
 
-:root {
-    --primary: #0078D7;
-    --primary-dark: #005FA3;
-    --background: #F5F7FA;
-    --text: #222;
-    --card-bg: #ffffff;
-    --border: #e5e5e5;
+/* ====== GLOBAL THEME STYLING ====== */
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    transition: 0.3s ease;
 }
 
-[data-theme="dark"] {
-    --background: #0D1117;
-    --text: #E6E6E6;
-    --card-bg: #11161c;
-    --border: #1f2933;
+button {
+    background: var(--primary);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: var(--primary-dark);
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: 0.3s ease;
 }
