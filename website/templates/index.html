@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
-    
 <head>
-
-    <link rel="stylesheet" href="{{ url_for('website.static', filename='style.css') }}">
-<script src="{{ url_for('website.static', filename='script.js') }}"></script>
-<button id="themeToggle" class="theme-btn">🌙</button>
-    
     <title>AI Salesman</title>
+    <link rel="stylesheet" href="{{ url_for('website.static', filename='style.css') }}">
 </head>
+
 <body>
+    <!-- Theme Toggle Button -->
+    <button id="themeToggle" class="theme-btn">🌙</button>
+
     <h1>Website UI Working!</h1>
+
+    <!-- JavaScript file should load at the end -->
+    <script src="{{ url_for('website.static', filename='script.js') }}"></script>
 </body>
 </html>
