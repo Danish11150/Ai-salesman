@@ -30,17 +30,22 @@ document.addEventListener("click", function(event) {
     }
 });
 
-const toggle = document.getElementById("themeToggle");
+document.addEventListener("DOMContentLoaded", () => {
 
-toggle.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme");
-    const newTheme = current === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", newTheme);
-    toggle.textContent = newTheme === "dark" ? "🌞" : "🌙";
-    localStorage.setItem("theme", newTheme);
+    const toggle = document.getElementById("themeToggle");
+
+    // Load saved theme first
+    const saved = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", saved);
+    toggle.textContent = saved === "dark" ? "🌞" : "🌙";
+
+    // Toggle theme on click
+    toggle.addEventListener("click", () => {
+        const current = document.documentElement.getAttribute("data-theme");
+        const newTheme = current === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        toggle.textContent = newTheme === "dark" ? "🌞" : "🌙";
+        localStorage.setItem("theme", newTheme);
+    });
+
 });
-
-// Load saved theme
-const saved = localStorage.getItem("theme") || "light";
-document.documentElement.setAttribute("data-theme", saved);
-toggle.textContent = saved === "dark" ? "🌞" : "🌙";
