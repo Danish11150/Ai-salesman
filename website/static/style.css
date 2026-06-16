@@ -137,3 +137,19 @@ body {
 .side-menu {
     transition: width 0.4s ease, background-color 0.3s ease;
 }
+
+:root {
+    --primary: #0078D7;
+    --primary-dark: #005FA3;
+    --background: #F5F7FA;
+    --text: #222;
+    --card-bg: #ffffff;
+    --border: #e5e5e5;
+}
+
+[data-theme="dark"] {
+    --background: #0D1117;
+    --text: #E6E6E6;
+    --card-bg: #11161c;
+    --border: #1f2933;
+}
