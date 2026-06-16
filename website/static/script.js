@@ -29,3 +29,18 @@ document.addEventListener("click", function(event) {
         menu.style.width = "0";
     }
 });
+
+const toggle = document.getElementById("themeToggle");
+
+toggle.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme");
+    const newTheme = current === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    toggle.textContent = newTheme === "dark" ? "🌞" : "🌙";
+    localStorage.setItem("theme", newTheme);
+});
+
+// Load saved theme
+const saved = localStorage.getItem("theme") || "light";
+document.documentElement.setAttribute("data-theme", saved);
+toggle.textContent = saved === "dark" ? "🌞" : "🌙";
