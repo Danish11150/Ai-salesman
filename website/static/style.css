@@ -27,7 +27,8 @@ body {
 .login-container {
   width: 350px;
   margin: 80px auto;
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
