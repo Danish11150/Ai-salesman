@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login - AI Salesman</title>
-    <link rel="stylesheet" href="{{ url_for('website.static', filename='style.css') }}">
-    <script src="{{ url_for('website.static', filename='script.js') }}"></script>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Login - AI Salesman{% endblock %}
+
+{% block content %}
 
 <div class="login-container">
     <h2>Welcome Back</h2>
@@ -23,12 +19,6 @@
         </p>
     </form>
 
-    <!-- ⭐ Add this here (correct place) -->
-    <p>
-        <!a href="/dashboard">Go to Dashboard</a>
-    </p>
-
 </div>
 
-</body>
-</html>
+{% endblock %}
