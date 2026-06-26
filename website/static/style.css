@@ -1,3 +1,6 @@
+/* =========================================
+   GLOBAL VARIABLES (LIGHT + DARK MODE)
+========================================= */
 :root {
     --primary: #0078D7;
     --primary-dark: #005FA3;
@@ -14,133 +17,79 @@ html[data-theme="dark"] {
     --border: #1f2933;
 }
 
-/* ====== BASIC RESET ====== */
+/* =========================================
+   GLOBAL RESET
+========================================= */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background: var(--background);
-  color: var(--text);
-  transition: 0.3s ease;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    transition: 0.3s ease;
 }
 
-/* ====== LOGIN CONTAINER ====== */
-.login-container {
-  width: 350px;
-  margin: 80px auto;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-.login-container h2 {
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  color: #777;
-  margin-bottom: 20px;
-}
-
-/* ====== FORM ELEMENTS ====== */
-.login-container input {
-  width: 90%;
-  padding: 12px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.login-container button {
-  width: 95%;
-  padding: 12px;
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.login-container button:hover {
-  background: var(--primary-dark);
-}
-
-/* ====== REGISTER LINK ====== */
-.register-link {
-  margin-top: 15px;
-}
-
-.register-link a {
-  color: var(--primary);
-  text-decoration: none;
-}
-
-/* ====== MOBILE RESPONSIVE ====== */
-@media (max-width: 600px) {
-  .login-container {
-    width: 90%;
-    margin: 50px auto;
-  }
-}
-
-/*======= Dashboard ======= */
-.dashboard-container {
-  width: 90%;
-  max-width: 500px;
-  margin: 50px auto;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-/* ====== MERGED CARD ====== */
-.card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  padding: 20px;
-  margin: 15px 0;
-  border-radius: 12px;
-  text-align: left;
-  transition: 0.3s ease;
-}
-
-/* ====== BUTTONS ====== */
-button {
-    background: var(--primary);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
+/* =========================================
+   THEME BUTTON
+========================================= */
+.theme-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 12px;
+    font-size: 20px;
+    border-radius: 50%;
     border: none;
     cursor: pointer;
+    background: var(--card-bg);
+    color: var(--text);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+/* =========================================
+   SIDE MENU (INDEX PAGE + DASHBOARD)
+========================================= */
+.menu-icon {
+    font-size: 28px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: var(--card-bg);
+    overflow-x: hidden;
+    transition: 0.4s;
+    padding-top: 60px;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.4);
+    backdrop-filter: blur(6px);
+    z-index: 999;
+}
+
+.side-menu a {
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: var(--text);
+    display: block;
     transition: 0.2s;
 }
 
-button:hover {
-    background: var(--primary-dark);
+.side-menu a:hover {
+    background-color: var(--border);
 }
 
-
-.theme-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  padding: 10px 12px;
-  font-size: 20px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  background: var(--card-bg);
-  color: var(--text);
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  z-index: 999;
-}
-
+/* =========================================
+   GLOBAL CONTAINER (CREATE SHOP, UPLOAD, ETC.)
+========================================= */
 .container {
     max-width: 600px;
     margin: 60px auto;
@@ -181,7 +130,95 @@ input, select {
     margin-top: 10px;
 }
 
+/* =========================================
+   LOGIN + REGISTER
+========================================= */
+.login-container {
+    width: 350px;
+    margin: 80px auto;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
 
+.login-container input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.login-container button {
+    width: 95%;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background: var(--primary-dark);
+}
+
+.register-link {
+    margin-top: 15px;
+}
+
+.register-link a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+/* =========================================
+   DASHBOARD
+========================================= */
+.dashboard-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 50px auto;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+    text-align: left;
+    transition: 0.3s ease;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+button {
+    background: var(--primary);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: var(--primary-dark);
+}
+
+/* =========================================
+   EDIT FORMS (SHOP + INVENTORY)
+========================================= */
 .edit-form {
     display: flex;
     flex-direction: column;
@@ -202,3 +239,56 @@ input, select {
     color: var(--primary);
 }
 
+/* =========================================
+   INVENTORY PAGE
+========================================= */
+.inventory-wrapper {
+    padding: 20px;
+}
+
+@media (min-width: 768px) {
+    .inventory-wrapper {
+        margin-left: 260px;
+        padding: 40px;
+    }
+}
+
+.inventory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.inventory-card {
+    background: var(--card-bg);
+    padding: 25px;
+    margin-top: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+}
+
+th {
+    background: var(--border);
+    font-weight: bold;
+}
+
+@media (max-width: 480px) {
+    th, td {
+        font-size: 13px;
+        padding: 8px;
+    }
+}
