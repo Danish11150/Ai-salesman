@@ -141,3 +141,42 @@ button:hover {
   z-index: 999;
 }
 
+.container {
+    max-width: 600px;
+    margin: 60px auto;
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 30px;
+}
+
+.container h2 {
+    text-align: center;
+    color: var(--text);
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 15px;
+    background: var(--card-bg);
+    color: var(--text);
+}
+
+.note {
+    text-align: center;
+    font-size: 13px;
+    color: #777;
+    margin-top: 10px;
+}
