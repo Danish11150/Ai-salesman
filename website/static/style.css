@@ -7,7 +7,7 @@
     --border: #e5e5e5;
 }
 
-[data-theme="dark"] {
+html[data-theme="dark"] {
     --background: #0D1117;
     --text: #E6E6E6;
     --card-bg: #11161c;
