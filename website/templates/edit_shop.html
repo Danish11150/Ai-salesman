@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Shop</title>
-    <style>
-        body { font-family: Arial; background: #f4f6f9; padding: 40px; }
-        .card {
-            background: white; padding: 25px; border-radius: 10px;
-            max-width: 500px; margin: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        input, select {
-            width: 100%; padding: 10px; margin-top: 10px;
-            border: 1px solid #ccc; border-radius: 6px;
-        }
-        button {
-            margin-top: 20px; padding: 12px; width: 100%;
-            background: #0078D7; color: white; border: none; border-radius: 6px;
-            font-size: 16px;
-        }
-    </style>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Edit Shop{% endblock %}
+
+{% block content %}
 
 <div class="card">
     <h2>Edit Shop</h2>
@@ -54,5 +36,4 @@
     </form>
 </div>
 
-</body>
-</html>
+{% endblock %}
