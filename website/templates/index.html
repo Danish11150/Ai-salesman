@@ -1,17 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>AI Salesman</title>
-    <link rel="stylesheet" href="{{ url_for('website.static', filename='style.css') }}">
-</head>
+{% extends "base.html" %}
+{% block title %}AI Salesman – Smart WhatsApp Automation{% endblock %}
 
-<body>
-    <!-- Theme Toggle Button -->
-    <button id="themeToggle" class="theme-btn">🌙</button>
+{% block content %}
 
-    <h1>Website UI Working!</h1>
+<!-- HERO SECTION -->
+<div style="text-align:center; padding:60px 20px;">
+    <h1 style="font-size:40px; margin-bottom:10px;">
+        Welcome to <span style="color:#0078D7;">AI Salesman</span>
+    </h1>
 
-    <!-- JavaScript file should load at the end -->
-    <script src="{{ url_for('website.static', filename='script.js') }}"></script>
-</body>
-</html>
+    <p style="font-size:18px; max-width:700px; margin:auto; color:var(--text);">
+        Automate your shop, manage customers, send invoices, track inventory, and run your business on WhatsApp — powered by AI.
+    </p>
+
+    <div style="margin-top:25px;">
+        <a href="/login" 
+           style="background:#0078D7; color:white; padding:12px 22px; border-radius:6px; text-decoration:none; font-size:16px; margin-right:10px;">
+           Login
+        </a>
+
+        <a href="/register" 
+           style="background:#28a745; color:white; padding:12px 22px; border-radius:6px; text-decoration:none; font-size:16px;">
+           Create Account
+        </a>
+    </div>
+</div>
+
+<!-- MENU BUTTON -->
+<div class="menu-icon" onclick="toggleMenu()" 
+     style="position:fixed; top:20px; right:20px; font-size:28px; cursor:pointer;">
+    &#9776;
+</div>
+
+<!-- SIDE MENU -->
+<div id="sideMenu" class="side-menu" 
+     style="width:0; position:fixed; top:0; right:0; height:100%; background:var(--card-bg); 
+            overflow-x:hidden; transition:0.3s; padding-top:60px; box-shadow:-2px 0 10px rgba(0,0,0,0.2);">
+
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/privacy_policy">Privacy Policy</a>
+    <a href="/contact_us">Contact Us</a>
+    <a href="/about_us">About Us</a>
+    <a href="/terms">Terms & Conditions</a>
+</div>
+
+<!-- ARTICLE SECTION -->
+<div style="max-width:900px; margin:50px auto; padding:20px;">
+    <h2 style="text-align:center;">What is AI Salesman?</h2>
+    <p style="font-size:17px; line-height:1.7; color:var(--text);">
+        AI Salesman is an advanced WhatsApp automation system designed for small businesses, shops, and service providers.
+        It helps you manage customers, send automated replies, track inventory, generate invoices, and run your business 24/7.
+    </p>
+
+    <p style="font-size:17px; line-height:1.7; color:var(--text);">
+        Whether you run a grocery store, mobile shop, salon, auto parts shop, or any service business — AI Salesman works for you.
+    </p>
+</div>
+
+{% endblock %}
