@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}AI Salesman{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('website.static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- GLOBAL THEME TOGGLE -->
+    <button id="themeToggle" class="theme-btn">🌙</button>
+
+    <!-- PAGE CONTENT -->
+    {% block content %}{% endblock %}
+
+    <!-- GLOBAL SCRIPT -->
+    <script src="{{ url_for('website.static', filename='script.js') }}"></script>
+
+</body>
+</html>
