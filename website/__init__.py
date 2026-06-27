@@ -16,7 +16,7 @@ website = Blueprint(
 
 @website.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html", page_type="index")
 
 
 # ⭐ REGISTER (Supabase logic)
@@ -37,7 +37,7 @@ def register_page():
 
         return redirect("/login")
 
-    return render_template("register.html")
+    return render_template("register.html", page_type="auth")
 
 
 # ⭐ LOGIN (Supabase logic)
@@ -58,7 +58,7 @@ def login_page():
 
         return "Wrong email or password"
 
-    return render_template("login.html")
+    return render_template("login.html", page_type="auth")
 
 
 # ⭐ DASHBOARD (Protected)
@@ -67,7 +67,7 @@ def dashboard_page():
     if "user_id" not in session:
         return redirect("/login")
 
-    return render_template("dashboard.html")
+    return render_template("dashboard.html", page_type="dashboard")
 
 @website.route("/upload_inventory", methods=["GET", "POST"])
 def upload_inventory():
@@ -89,7 +89,7 @@ def upload_inventory():
 
         return redirect("/inventory")
 
-    return render_template("upload_inventory.html")
+    return render_template("upload_inventory.html", page_type="dashboard")
 
 @website.route("/add_inventory", methods=["POST"])
 def add_inventory():
@@ -134,7 +134,7 @@ def inventory_page():
     items = supabase.table("inventory").select("*").eq("shop_id", shop_id).execute().data
 
     # Send items to HTML page
-    return render_template("inventory.html", items=items, shop_id=shop_id)
+    return render_template("inventory.html", items=items, shop_id=shop_id, page_type="dashboard")
 
 @website.route("/create_inventory", methods=["POST"])
 def create_inventory():
@@ -182,7 +182,7 @@ def edit_item(item_id):
     if not item:
         return "Item not found"
 
-    return render_template("edit_inventory.html", item=item[0], shop_id=shop_id)
+    return render_template("edit_inventory.html", item=item[0], shop_id=shop_id, page_type="dashboard")
 
 
 
@@ -225,7 +225,7 @@ def edit_shop():
     if not shop:
         return "Shop not found"
 
-    return render_template("edit_shop.html", shop=shop[0])
+    return render_template("edit_shop.html", shop=shop[0], page_type="dashboard")
 
 @website.route("/update_shop", methods=["POST"])
 def update_shop():
@@ -243,6 +243,7 @@ def update_shop():
     }).eq("id", shop_id).execute()
 
     return redirect("/my_shops")
+    
 @website.route("/create_shop", methods=["GET", "POST"])
 def create_shop():
     if "user_id" not in session:
@@ -265,11 +266,12 @@ def create_shop():
 
         return redirect("/my_shops")
 
-    return render_template("create_shop.html")
+    return render_template("create_shop.html", page_type="dashboard")
+
 @website.route("/my_shops")
 def my_shops():
     if "user_id" not in session:
         return redirect("/login")
 
     shops = supabase.table("shops").select("*").eq("user_id", session["user_id"]).execute().data
-    return render_template("my_shops.html", shops=shops)
+    return render_template("my_shops.html", shops=shops, page_type="dashboard")
