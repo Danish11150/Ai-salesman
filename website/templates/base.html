@@ -1,21 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}AI Salesman{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('website.static', filename='style.css') }}">
 </head>
 
 <body>
-
-    <!-- GLOBAL THEME TOGGLE -->
+    <!-- Theme Toggle -->
     <button id="themeToggle" class="theme-btn">🌙</button>
 
-    <!-- PAGE CONTENT -->
-    {% block content %}{% endblock %}
+    <!-- Menu Icon -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
-    <!-- GLOBAL SCRIPT -->
-    <script src="{{ url_for('website.static', filename='script.js') }}"></script>
+    <!-- Side Menu -->
+    <div id="sideMenu" class="side-menu">
+        {% if page_type == 'index' %}
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/pricing">Pricing</a>
+            <a href="/privacy_policy">Privacy Policy</a>
+            <a href="/contact_us">Contact Us</a>
+            <a href="/about_us">About Us</a>
+        {% else %}
+            <a href="/dashboard">Dashboard</a>
+            <a href="/my_shops">My Shops</a>
+            <a href="/create_shop">Create Shop</a>
+            <a href="/upload_inventory">Upload Inventory</a>
+            <a href="/subscription">Subscription</a>
+            <a href="/logout">Logout</a>
+        {% endif %}
+    </div>
 
+    <!-- Page Content -->
+    <div class="page-content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("sideMenu");
+            menu.style.width = menu.style.width === "0px" || menu.style.width === "" ? "250px" : "0px";
+        }
+
+        // Theme toggle logic
+        const themeToggle = document.getElementById("themeToggle");
+        themeToggle.addEventListener("click", () => {
+            const html = document.documentElement;
+            html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
+        });
+    </script>
 </body>
 </html>
