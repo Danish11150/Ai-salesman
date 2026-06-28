@@ -60,6 +60,10 @@ def login_page():
 
     return render_template("login.html", page_type="auth")
 
+@website.route("/logout")
+def logout_page():
+    session.pop("user_id", None)
+    return redirect("/login")
 
 # ⭐ DASHBOARD (Protected)
 @website.route("/dashboard")
