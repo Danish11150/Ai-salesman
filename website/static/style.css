@@ -319,3 +319,20 @@ th {
     margin-bottom: 20px;
 }
 
+
+.page-content {
+    position: relative;
+    z-index: 1;
+}
+
+.menu-icon {
+    z-index: 99999;
+}
+
+.theme-btn {
+    z-index: 900;
+}
+
+.side-menu {
+    z-index: 9999;
+}
