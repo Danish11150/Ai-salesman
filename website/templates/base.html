@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
+
+    <!-- Load saved theme BEFORE CSS -->
+    <script>
+        const savedTheme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+    </script>
+
     <link rel="stylesheet" href="{{ url_for('website.static', filename='style.css') }}">
 </head>
 
@@ -38,18 +45,7 @@
         {% block content %}{% endblock %}
     </div>
 
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById("sideMenu");
-            menu.style.width = menu.style.width === "0px" || menu.style.width === "" ? "250px" : "0px";
-        }
-
-        // Theme toggle logic
-        const themeToggle = document.getElementById("themeToggle");
-        themeToggle.addEventListener("click", () => {
-            const html = document.documentElement;
-            html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
-        });
-    </script>
+    <!-- Load main JS -->
+    <script src="{{ url_for('website.static', filename='script.js') }}"></script>
 </body>
 </html>
