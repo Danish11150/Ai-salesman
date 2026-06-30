@@ -293,42 +293,6 @@ th {
     }
 }
 
-.side-menu {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background: var(--card-bg);
-    overflow-x: hidden;
-    transition: 0.4s;
-    padding-top: 60px;
-    box-shadow: -4px 0 10px rgba(0,0,0,0.4);
-    z-index: 999;
-}
-
-.side-menu a {
-    padding: 12px 20px;
-    text-decoration: none;
-    font-size: 18px;
-    color: var(--text);
-    display: block;
-    transition: 0.2s;
-}
-
-.side-menu a:hover {
-    background-color: var(--border);
-}
-
-.menu-icon {
-    font-size: 28px;
-    cursor: pointer;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 999;
-}
-
 .btn-primary {
     background: var(--primary);
     color: white;
