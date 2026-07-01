@@ -1,26 +1,25 @@
-{% extends "base.html" %}
-{% block title %}Create Shop{% endblock %}
-
 {% block content %}
 
-<div class="container">
-    <h2>Create Your Shop</h2>
+<div class="form-wrapper">
 
-    <form method="POST">
-        <label>Shop Name:</label>
+    <h2 class="form-title">Create Your Shop</h2>
+
+    <form method="POST" class="form-card">
+
+        <label>Shop Name</label>
         <input type="text" name="name" placeholder="Enter your shop name" required>
 
-        <label>Industry (optional):</label>
+        <label>Industry (optional)</label>
         <input type="text" name="industry" placeholder="Grocery, Auto Parts, Barber, etc.">
 
-        <label>Shop Type:</label>
+        <label>Shop Type</label>
         <select name="shop_type">
             <option value="product">Product Based</option>
             <option value="service">Service Based</option>
             <option value="both">Both</option>
         </select>
 
-        <label>Default Currency:</label>
+        <label>Default Currency</label>
         <select name="currency">
             <option value="SAR">SAR (Saudi Riyal)</option>
             <option value="USD">USD</option>
@@ -28,10 +27,12 @@
             <option value="INR">INR</option>
         </select>
 
-        <button type="submit">Create Shop</button>
+        <button type="submit" class="btn-primary">Create Shop</button>
+
     </form>
 
     <p class="note">Your shop will be linked to your account automatically.</p>
+
 </div>
 
 {% endblock %}
