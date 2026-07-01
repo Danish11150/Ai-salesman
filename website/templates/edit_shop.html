@@ -1,10 +1,8 @@
-{% extends "base.html" %}
-{% block title %}Edit Shop{% endblock %}
-
 {% block content %}
 
-<div class="card">
-    <h2>Edit Shop</h2>
+<div class="edit-form">
+
+    <h2 style="text-align:center; margin-bottom:15px;">Edit Shop</h2>
 
     <form action="/update_shop" method="POST">
 
@@ -31,9 +29,12 @@
             <option value="INR" {% if shop.currency == 'INR' %}selected{% endif %}>INR</option>
         </select>
 
-        <button type="submit">Save Changes</button>
+        <button type="submit" class="btn-primary">Save Changes</button>
 
     </form>
+
 </div>
+
+<a class="back-link" href="/my_shops">← Back to My Shops</a>
 
 {% endblock %}
