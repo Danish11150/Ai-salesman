@@ -1,62 +1,65 @@
-{% extends "base.html" %}
-{% block title %}AI Salesman – Smart WhatsApp Automation{% endblock %}
-
 {% block content %}
 
-<!-- HERO SECTION -->
-<div style="text-align:center; padding:60px 20px;">
-    <h1 style="font-size:40px; margin-bottom:10px;">
-        Welcome to <span style="color:#0078D7;">AI Salesman</span>
-    </h1>
+<div class="landing-wrapper">
 
-    <p style="font-size:18px; max-width:700px; margin:auto; color:var(--text);">
-        Automate your shop, manage customers, send invoices, track inventory, and run your business on WhatsApp — powered by AI.
-    </p>
+    <!-- HERO SECTION -->
+    <div class="hero-section">
+        <h1>Welcome to <span style="color:var(--primary);">AI Salesman</span></h1>
+        <p>
+            Automate your shop, manage customers, send invoices, track inventory,  
+            and run your business on WhatsApp — powered by AI.
+        </p>
 
-    <div style="margin-top:25px;">
-        <a href="/login" 
-           style="background:#0078D7; color:white; padding:12px 22px; border-radius:6px; text-decoration:none; font-size:16px; margin-right:10px;">
-           Login
-        </a>
-
-        <a href="/register" 
-           style="background:#28a745; color:white; padding:12px 22px; border-radius:6px; text-decoration:none; font-size:16px;">
-           Create Account
-        </a>
+        <div class="hero-actions">
+            <a href="/login" class="btn-primary">Login</a>
+            <a href="/register" class="btn-secondary">Create Account</a>
+        </div>
     </div>
-</div>
 
-<!-- MENU BUTTON -->
-<div class="menu-icon" onclick="toggleMenu()" 
-     style="position:fixed; top:20px; right:20px; font-size:28px; cursor:pointer;">
-    &#9776;
-</div>
+    <!-- FEATURES SECTION -->
+    <div class="features-grid">
 
-<!-- SIDE MENU -->
-<div id="sideMenu" class="side-menu" 
-     style="width:0; position:fixed; top:0; right:0; height:100%; background:var(--card-bg); 
-            overflow-x:hidden; transition:0.3s; padding-top:60px; box-shadow:-2px 0 10px rgba(0,0,0,0.2);">
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>AI Chat Automation</h3>
+            <p>Your bot replies instantly to customers 24/7.</p>
+        </div>
 
-    <a href="/login">Login</a>
-    <a href="/register">Register</a>
-    <a href="/pricing">Pricing</a>
-    <a href="/privacy_policy">Privacy Policy</a>
-    <a href="/contact_us">Contact Us</a>
-    <a href="/about_us">About Us</a>
-    <a href="/terms">Terms & Conditions</a>
-</div>
+        <div class="feature-card">
+            <div class="feature-icon">📦</div>
+            <h3>Smart Inventory</h3>
+            <p>Upload products and manage stock easily.</p>
+        </div>
 
-<!-- ARTICLE SECTION -->
-<div style="max-width:900px; margin:50px auto; padding:20px;">
-    <h2 style="text-align:center;">What is AI Salesman?</h2>
-    <p style="font-size:17px; line-height:1.7; color:var(--text);">
-        AI Salesman is an advanced WhatsApp automation system designed for small businesses, shops, and service providers.
-        It helps you manage customers, send automated replies, track inventory, generate invoices, and run your business 24/7.
-    </p>
+        <div class="feature-card">
+            <div class="feature-icon">🏪</div>
+            <h3>Multi-Shop Support</h3>
+            <p>Create and manage multiple shops from one dashboard.</p>
+        </div>
 
-    <p style="font-size:17px; line-height:1.7; color:var(--text);">
-        Whether you run a grocery store, mobile shop, salon, auto parts shop, or any service business — AI Salesman works for you.
-    </p>
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Fast & Secure</h3>
+            <p>Optimized for speed, security, and reliability.</p>
+        </div>
+
+    </div>
+
+    <!-- ARTICLE SECTION -->
+    <div class="article-section">
+        <h2>What is AI Salesman?</h2>
+        <p>
+            AI Salesman is an advanced WhatsApp automation system designed for small businesses, shops,  
+            and service providers. It helps you manage customers, send automated replies, track inventory,  
+            generate invoices, and run your business 24/7.
+        </p>
+
+        <p>
+            Whether you run a grocery store, mobile shop, salon, auto parts shop, or any service business —  
+            AI Salesman works for you.
+        </p>
+    </div>
+
 </div>
 
 {% endblock %}
