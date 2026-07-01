@@ -1,47 +1,39 @@
-{% extends "base.html" %}
-{% block title %}Your Shops{% endblock %}
-
 {% block content %}
-<div class="top-actions">
-    <a href="/create_shop" class="btn-primary">+ Create Shop</a>
-    <a href="/upload_inventory" class="btn-secondary">Upload Inventory</a>
-</div>
 
-<div class="container">
-    <h2>Your Shops</h2>
+<div class="shops-wrapper">
 
-    <div class="top-actions">
-        <a href="/create_shop">+ Create New Shop</a>
-        <a href="/upload_inventory">Upload Inventory</a>
+    <h2 class="shops-title">Your Shops</h2>
+
+    <div class="shops-actions">
+        <a href="/create_shop" class="btn-primary">+ Create New Shop</a>
+        <a href="/upload_inventory" class="btn-secondary">Upload Inventory</a>
     </div>
 
-    {% for shop in shops %}
-    <div class="shop-card">
-        <div class="shop-title">{{ shop.name }}</div>
+    <div class="shops-grid">
 
-        <div class="shop-info">
-            <strong>Industry:</strong> {{ shop.industry }} <br>
-            <strong>Plan:</strong> {{ shop.plan }}
+        {% for shop in shops %}
+        <div class="shop-card">
+
+            <div class="shop-icon">🏪</div>
+
+            <h3 class="shop-title">{{ shop.name }}</h3>
+
+            <p class="shop-info">
+                <strong>Industry:</strong> {{ shop.industry }} <br>
+                <strong>Plan:</strong> {{ shop.plan }}
+            </p>
+
+            <div class="shop-actions">
+                <a href="/inventory?shop_id={{ shop.id }}" class="btn-primary">Open</a>
+                <a href="/edit_shop?shop_id={{ shop.id }}" class="btn-warning">Edit</a>
+                <a href="/delete_shop?shop_id={{ shop.id }}" class="btn-danger">Delete</a>
+            </div>
+
         </div>
+        {% endfor %}
 
-        <div class="shop-actions">
-            <a href="/inventory?shop_id={{ shop.id }}"
-               style="background:#0078D7; color:white; padding:8px 14px; border-radius:6px; text-decoration:none;">
-               Open
-            </a>
-
-            <a href="/edit_shop?shop_id={{ shop.id }}"
-               style="background:#ffc107; color:black; padding:8px 14px; border-radius:6px; text-decoration:none; margin-left:8px;">
-               Edit
-            </a>
-
-            <a href="/delete_shop?shop_id={{ shop.id }}"
-               style="background:#dc3545; color:white; padding:8px 14px; border-radius:6px; text-decoration:none; margin-left:8px;">
-               Delete
-            </a>
-        </div>
     </div>
-    {% endfor %}
+
 </div>
 
 {% endblock %}
