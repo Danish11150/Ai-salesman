@@ -3,48 +3,38 @@
 
 {% block content %}
 
-<div class="dashboard-container">
-    <h2>Welcome to Your Dashboard</h2>
+<div class="dashboard-wrapper">
 
-    <div style="text-align:center; margin-top:30px;">
-        <a href="/create_shop"
-           style="background:#0078D7; color:white; padding:12px 20px;
-                  border-radius:6px; text-decoration:none; font-weight:600;">
-           + Create Shop
+    <h2 class="dash-title">Welcome to Your Dashboard</h2>
+
+    <div class="dash-grid">
+
+        <a href="/my_shops" class="dash-card">
+            <div class="dash-icon">🏪</div>
+            <h3>My Shops</h3>
+            <p>Manage all your shops</p>
         </a>
 
-        <p class="subtitle">Your AI Salesman Bot is ready!</p>
+        <a href="/create_shop" class="dash-card">
+            <div class="dash-icon">➕</div>
+            <h3>Create Shop</h3>
+            <p>Add a new shop</p>
+        </a>
 
-        <div class="card">
-            <h3>Bot Status</h3>
-            <p>Running smoothly ✔</p>
-        </div>
+        <a href="/upload_inventory" class="dash-card">
+            <div class="dash-icon">📦</div>
+            <h3>Upload Inventory</h3>
+            <p>Upload products in bulk</p>
+        </a>
 
-        <div class="card">
-            <h3>Messages Today</h3>
-            <p>0</p>
-        </div>
+        <a href="/subscription" class="dash-card">
+            <div class="dash-icon">💳</div>
+            <h3>Subscription</h3>
+            <p>Upgrade your plan</p>
+        </a>
 
-        <div class="card">
-            <h3>Settings</h3>
-            <a href="#">Configure Bot</a>
-        </div>
-
-        <a class="logout-btn" href="/logout">Logout</a>
     </div>
-</div>
 
-<div class="menu-icon" onclick="toggleMenu()">
-    &#9776;
-</div>
-
-<div id="sideMenu" class="side-menu">
-   <a href="/dashboard">Dashboard</a>
-   <a href="/my_shops">My Shops</a>
-   <a href="/customers">Customers</a>
-   <a href="/automation">Automation</a>
-   <a href="/billing">Billing</a>
-   <a href="/logout">Logout</a>
 </div>
 
 {% endblock %}
