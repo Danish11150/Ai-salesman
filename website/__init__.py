@@ -37,7 +37,7 @@ def register_page():
 
         return redirect("/login")
 
-    return render_template("register.html", page_type="auth")
+    return render_template("register.html", page_type="index")
 
 
 # ⭐ LOGIN (Supabase logic)
@@ -58,7 +58,7 @@ def login_page():
 
         return "Wrong email or password"
 
-    return render_template("login.html", page_type="auth")
+    return render_template("login.html", page_type="index")
 
 @website.route("/logout")
 def logout_page():
