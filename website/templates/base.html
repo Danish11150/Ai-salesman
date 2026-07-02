@@ -5,23 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
 
-    <!-- Load saved theme BEFORE CSS -->
     <script>
         const savedTheme = localStorage.getItem("theme") || "light";
         document.documentElement.setAttribute("data-theme", savedTheme);
     </script>
 
-    <link rel="stylesheet" href="{{ url_for('website.static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
-    <!-- Theme Toggle -->
+
     <button id="themeToggle" class="theme-btn">🌙</button>
 
-    <!-- Menu Icon -->
     <div class="menu-icon">☰</div>
 
-    <!-- Side Menu -->
     <div id="sideMenu" class="side-menu">
         {% if page_type == 'index' %}
             <a href="/login">Login</a>
@@ -40,12 +37,10 @@
         {% endif %}
     </div>
 
-    <!-- Page Content -->
     <div class="page-content">
         {% block content %}{% endblock %}
     </div>
 
-    <!-- Load main JS -->
-    <script src="{{ url_for('website.static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
