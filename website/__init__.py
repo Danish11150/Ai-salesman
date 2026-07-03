@@ -43,6 +43,8 @@ def register_page():
 # ⭐ LOGIN (Supabase logic)
 @website.route("/login", methods=["GET", "POST"])
 def login_page():
+    plan = request.args.get("plan")  # ← yeh line add karo
+
     if request.method == "POST":
         email = request.form["email"]
         password = request.form["password"]
@@ -54,11 +56,16 @@ def login_page():
 
             if check_password_hash(user["password"], password):
                 session["user_id"] = user["id"]
+
+                # Agar plan URL se aya tha → ab activate karo
+                if plan:
+                    supabase.table("shops").update({"plan": plan}).eq("user_id", user["id"]).execute()
+
                 return redirect("/dashboard")
 
         return "Wrong email or password"
 
-    return render_template("login.html", page_type="index")
+    return render_template("login.html", page_type="auth"))
 
 @website.route("/logout")
 def logout_page():
