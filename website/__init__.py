@@ -277,7 +277,7 @@ def my_shops():
     if "user_id" not in session:
         return redirect("/login")
 
-    @website.route("/pricing")
+@website.route("/pricing")
 def pricing_page():
     return render_template("pricing.html", page_type="index")
 
