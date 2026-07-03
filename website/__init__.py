@@ -65,7 +65,7 @@ def login_page():
 
         return "Wrong email or password"
 
-    return render_template("login.html", page_type="auth"))
+    return render_template("login.html", page_type="auth")
 
 @website.route("/logout")
 def logout_page():
