@@ -301,5 +301,17 @@ def contact_us_page():
 def about_us_page():
     return render_template("about_us.html", page_type="index")
 
+@website.route("/choose_plan")
+def choose_plan():
+    plan = request.args.get("plan")
+
+    # User login nahi hai → login par bhejo
+    if "user_id" not in session:
+        return redirect(f"/login?plan={plan}")
+
+    # User login hai → plan activate karo
+    supabase.table("shops").update({"plan": plan}).eq("user_id", session["user_id"]).execute()
+    return redirect("/dashboard")
+
     shops = supabase.table("shops").select("*").eq("user_id", session["user_id"]).execute().data
     return render_template("my_shops.html", shops=shops, page_type="dashboard")
