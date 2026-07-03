@@ -277,5 +277,29 @@ def my_shops():
     if "user_id" not in session:
         return redirect("/login")
 
+    @website.route("/pricing")
+def pricing_page():
+    return render_template("pricing.html", page_type="index")
+
+@website.route("/subscription", methods=["GET", "POST"])
+def subscription_page():
+    plan = request.args.get("plan", "basic")
+    if request.method == "POST":
+        supabase.table("shops").update({"plan": plan}).eq("user_id", session["user_id"]).execute()
+        return redirect("/dashboard")
+    return render_template("subscription.html", plan=plan, page_type="index")
+
+@website.route("/privacy_policy")
+def privacy_policy_page():
+    return render_template("privacy_policy.html", page_type="index")
+
+@website.route("/contact_us")
+def contact_us_page():
+    return render_template("contact_us.html", page_type="index")
+
+@website.route("/about_us")
+def about_us_page():
+    return render_template("about_us.html", page_type="index")
+
     shops = supabase.table("shops").select("*").eq("user_id", session["user_id"]).execute().data
     return render_template("my_shops.html", shops=shops, page_type="dashboard")
