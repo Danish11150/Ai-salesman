@@ -287,6 +287,18 @@ def my_shops():
     if "user_id" not in session:
         return redirect("/login")
 
+    shops = supabase.table("shops").select("*").eq("user_id", session["user_id"]).execute().data
+    plan = shops[0]["plan"] if shops else "basic"
+
+    limit_map = {
+        "basic": 1,
+        "standard": 3,
+        "pro": 9999
+    }
+    limit = limit_map.get(plan, 1)
+
+    return render_template("my_shops.html", shops=shops, limit=limit, page_type="dashboard")
+
 @website.route("/pricing")
 def pricing_page():
     return render_template("pricing.html", page_type="index")
