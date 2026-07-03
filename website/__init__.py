@@ -78,7 +78,10 @@ def dashboard_page():
     if "user_id" not in session:
         return redirect("/login")
 
-    return render_template("dashboard.html", page_type="dashboard")
+    shops = supabase.table("shops").select("*").eq("user_id", session["user_id"]).execute().data
+    user_plan = shops[0]["plan"] if shops else "basic"
+
+    return render_template("dashboard.html", user_plan=user_plan, page_type="dashboard")
 
 @website.route("/upload_inventory", methods=["GET", "POST"])
 def upload_inventory():
