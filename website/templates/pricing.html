@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="landing-wrapper">
+
+    <h1>Pricing Plans</h1>
+    <p>Choose the plan that fits your business.</p>
+
+    <div class="features-grid">
+
+        <div class="feature-card">
+            <h3>Basic — 49 SAR</h3>
+            <p>For small shops</p>
+            <ul>
+                <li>AI Auto Replies</li>
+                <li>1 Shop</li>
+                <li>100 Inventory Items</li>
+            </ul>
+            <a href="/subscription?plan=basic" class="btn-primary">Choose Basic</a>
+        </div>
+
+        <div class="feature-card">
+            <h3>Standard — 99 SAR</h3>
+            <p>For growing businesses</p>
+            <ul>
+                <li>AI Auto Replies</li>
+                <li>3 Shops</li>
+                <li>500 Inventory Items</li>
+                <li>Invoice Generator</li>
+            </ul>
+            <a href="/subscription?plan=standard" class="btn-primary">Choose Standard</a>
+        </div>
+
+        <div class="feature-card">
+            <h3>Pro — 149 SAR</h3>
+            <p>For professionals</p>
+            <ul>
+                <li>AI Auto Replies</li>
+                <li>Unlimited Shops</li>
+                <li>Unlimited Inventory</li>
+                <li>Advanced AI Salesman</li>
+            </ul>
+            <a href="/subscription?plan=pro" class="btn-primary">Choose Pro</a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
